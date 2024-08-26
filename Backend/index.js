@@ -20,7 +20,6 @@ db.connect();
 app.get("/all", async (req,res) => {
     res.header("Access-Control-Allow-Origin", "*");
     const result = await db.query("Select * from notes");
-    console.log(result);
     return res.json(result.rows);
     next();
 });

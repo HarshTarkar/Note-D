@@ -55,4 +55,51 @@ html {
     white-space: pre-wrap;
     word-wrap: break-word;
   }
-  
+  .note button {
+    float: right;
+    background: none;
+    color:#5264ef;
+    font-size: 1.1em;
+    border: none;
+    outline: none;
+  }
+  .form {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 350px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+  }
+  .form input {
+    font-size: 1.7em;
+    margin-bottom: 6px;
+    border: 0px;
+    outline: 0px;
+    width: 100%;
+  }
+  .form textarea {
+    font-size: 1.7em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 0px;
+    outline: 0px;
+    width: 100%;
+    resize: none;
+  }
+
+.form button{
+  font-size: 1.7em;
+  float: right;
+  color: white;
+  background-color: #5264ef;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 0px;
+  outline: 0px;
+}
