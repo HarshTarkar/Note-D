@@ -8,6 +8,7 @@ function CreateArea(){
         content:""
     });
 
+
     function handleChange(event){
         const {name, value} = event.target;
 
@@ -20,7 +21,7 @@ function CreateArea(){
 
     async function addNote(event){
         event.preventDefault();
-        const result = await axios.post("http://localhost:3000/add/" + newNote.title + "&" + newNote.content)
+        const result = await axios.post(import.meta.env.VITE_APP_URL + "/add/" + newNote.title + "&" + newNote.content)
         setNewNote({
             title:"",
             content:""

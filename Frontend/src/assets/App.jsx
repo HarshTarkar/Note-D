@@ -3,14 +3,14 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
-import axios from "axios"
+import axios from "axios";
 
 function App(){
 
     const [notes, setNotes] = useState([]);
 
     async function updateNotes(){
-        const res = await axios.get("http://localhost:3000/all");
+        const res = await axios.get(import.meta.env.VITE_APP_URL+"/all");
         setNotes(res.data);
     }
 
