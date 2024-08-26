@@ -31,8 +31,8 @@ function CreateArea(){
 
     return (<div>
         <form className="form">
-            <input name="title" id="form_input" onChange={handleChange} placeholder="Enter title" value={newNote.title}></input>
-            <textarea name="content" id="form_textarea" onChange={handleChange} placeholder="Enter content" value={newNote.content}></textarea>
+            <input name="title" onChange={handleChange} placeholder="Add Note" value={newNote.title}></input>
+            <textarea name="content" onChange={handleChange} placeholder="Add Content" value={newNote.content}></textarea>
             <button onClick={addNote}>+</button>
         </form>
     </div>)

@@ -22,6 +22,7 @@ function App(){
             <CreateArea />
             {notes.map((noteItem) => {
                 return <Note key={noteItem.key}
+                id={noteItem.key}
                 title={noteItem.title}
                 content={noteItem.content} />
             })}

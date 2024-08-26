@@ -2,9 +2,15 @@ import express from "express";
 import pg from "pg";
 import bodyParser from "body-parser";
 import env from "dotenv";
+import cors from "cors";
 
 const app = express();
 env.config();
+
+const options = {
+    origin: 'http://localhost:5173',
+    };
+app.use(cors(options));
 
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -17,15 +23,13 @@ const db = new pg.Client({
 });
 db.connect();
 
-app.get("/all", async (req,res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+app.get("/all", cors(), async (req,res) => {
     const result = await db.query("Select * from notes");
     return res.json(result.rows);
     next();
 });
 
-app.post("/add/:title&:content", async (req,res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+app.post("/add/:title&:content", cors(), async (req,res) => {
     const title = req.params.title;
     const content = req.params.content;
     await db.query("Insert into notes(title, content) values($1, $2)", [title, content]);
@@ -33,10 +37,9 @@ app.post("/add/:title&:content", async (req,res) => {
     res.json("Added");
 });
 
-app.delete("/delete/:id", async (req,res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    const id = parseInt(req.params.id);
-    await db.query("Delete from notes where id = $1", [id]);
+app.delete("/delete/:key", cors(), async (req,res) => {
+    const id = parseInt(req.params.key);
+    await db.query("Delete from notes where key = $1", [id]);
     res.status(200);
     res.json("Deleted");
 });
