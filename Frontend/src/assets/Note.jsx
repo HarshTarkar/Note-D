@@ -4,8 +4,7 @@ import axios from "axios";
 function Note(props) {
 
 
-  async function deleteNote(process){
-    process.preventDefault();
+  async function deleteNote(){
     const result = await axios.delete(import.meta.env.VITE_APP_URL + "/delete/" + parseInt(props.id));
     console.log(result);
   }
@@ -14,7 +13,9 @@ function Note(props) {
     <div className="note">
       <h1>{props.title}</h1>
       <p>{props.content}</p>
-      <button onClick={deleteNote}>Delete</button>
+      <form>
+        <button onClick={deleteNote}>Delete</button>
+      </form>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -9,18 +9,23 @@ function App(){
 
     const [notes, setNotes] = useState([]);
 
-    async function updateNotes(){
-        const res = await axios.get(import.meta.env.VITE_APP_URL+"/all");
-        setNotes(res.data);
-    }
 
-    updateNotes();
+
+    useEffect(() => {
+        async function updateNotes(){
+            const res = await axios.get(import.meta.env.VITE_APP_URL+"/all");
+            setNotes(res.data);
+        }
+        updateNotes();
+    }, []);
+
+
 
     return (
         <div>
             <Header />
             <CreateArea />
-            {notes.map((noteItem) => {
+            {notes && notes.map((noteItem) => {
                 return <Note key={noteItem.key}
                 id={noteItem.key}
                 title={noteItem.title}

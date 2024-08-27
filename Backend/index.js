@@ -25,8 +25,8 @@ db.connect();
 
 app.get("/all", cors(), async (req,res) => {
     const result = await db.query("Select * from notes");
+    console.log("Data sent");
     return res.json(result.rows);
-    next();
 });
 
 app.post("/add/:title&:content", cors(), async (req,res) => {

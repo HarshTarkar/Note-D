@@ -19,8 +19,7 @@ function CreateArea(){
         });
     }
 
-    async function addNote(event){
-        event.preventDefault();
+    async function addNote(){
         const result = await axios.post(import.meta.env.VITE_APP_URL + "/add/" + newNote.title + "&" + newNote.content)
         setNewNote({
             title:"",
