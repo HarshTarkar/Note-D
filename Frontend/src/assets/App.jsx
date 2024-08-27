@@ -11,9 +11,12 @@ function App(){
 
 
 
-    useEffect(async () => {
-        const res = await axios.get(import.meta.env.VITE_APP_URL+"/all");
-        setNotes(res.data);
+    useEffect(() => {
+        async function updateNotes(){
+            const res = await axios.get(import.meta.env.VITE_APP_URL+"/all");
+            setNotes(res.data);
+        }
+        updateNotes();
     }, []);
 
 
